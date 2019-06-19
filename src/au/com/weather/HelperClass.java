@@ -13,7 +13,9 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import au.com.weather.data.model.City;
+import au.com.weather.data.model.Main;
 import au.com.weather.data.model.OpenWeatherMap;
+import au.com.weather.data.model.Wind;
 
 public class HelperClass {
 	
@@ -50,8 +52,9 @@ public class HelperClass {
 		restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
 		 
 		 OpenWeatherMap owm = restTemplate.getForObject(url, OpenWeatherMap.class);
-		 String formattedDt = getAESTDateAndTime(Long.parseLong(owm.getDt()));
-		 owm.setDt(formattedDt);
+		 
+		 owm = transformData(owm);
+		 
 		 if(null != owm)
 			 owm.toPrint();
 		 
@@ -66,6 +69,23 @@ public class HelperClass {
 		    	        .atZone(ZoneId.of("Australia/Sydney"))
 		    	        .format(formatter);
 		    	return formattedDt;
+	 }
+	 
+	 public OpenWeatherMap transformData(OpenWeatherMap owm) {
+		 String formattedDt = getAESTDateAndTime(Long.parseLong(owm.getDt()));
+		 owm.setDt(formattedDt);
+		 
+		 Wind wind = owm.getWind();
+		 String windSpeed = owm.getWind().getSpeed() + " km/h";
+		 wind.setSpeed(windSpeed);
+		 owm.setWind(wind);
+		 
+		 Main main = owm.getMain();
+		 String temp = main.getTemp()+" \u00B0C";
+		 main.setTemp(temp);
+		 owm.setMain(main);
+		 
+		 return owm;
 	 }
 
 }

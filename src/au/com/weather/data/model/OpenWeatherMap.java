@@ -17,18 +17,7 @@ public class OpenWeatherMap {
     private String name;
     private int cod;
     
-    public  OpenWeatherMap() {
-    }
 
-	/*
-	 * public OpenWeatherMap(Coord coord, List<Weather> weatherList, String base,
-	 * Main main, Wind wind, Clouds clouds, long dt, Sys sys, int id, int timezone,
-	 * String name, int cod) { this.coord = coord; this.weather = weatherList;
-	 * this.base = base; this.main = main; this.wind = wind; this.clouds = clouds;
-	 * this.dt = dt; this.sys = sys; this.id = id; this.timezone=timezone; this.name
-	 * = name; this.cod = cod; }
-	 */
-    
     public void toPrint() {
     	System.out.println("Coord=lat:"+coord.getLat() +":lon:"+coord.getLon());
     	for (Weather weather2 : weather) {

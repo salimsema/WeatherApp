@@ -1,27 +1,18 @@
 package au.com.weather.data.model;
 
 public class Main {
-    private double temp;
+    private String temp;
     private double pressure;
     private int humidity;
     private double temp_min;
     private double temp_max;
     
-    public Main() {}
 
-    public  Main(double temp, double pressure, int humidity, double temp_min, double temp_max) {
-        this.temp = temp;
-        this.pressure = pressure;
-        this.humidity = humidity;
-        this.temp_min = temp_min;
-        this.temp_max = temp_max;
-    }
-
-    public  double getTemp() {
+    public  String getTemp() {
         return temp;
     }
 
-    public  void setTemp(double temp) {
+    public  void setTemp(String temp) {
         this.temp = temp;
     }
 

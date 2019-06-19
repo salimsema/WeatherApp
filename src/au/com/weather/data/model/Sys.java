@@ -7,17 +7,6 @@ public class Sys {
     private String country;
     private double sunrise;
     private double sunset;
-    
-    public Sys() {}
-
-    public  Sys(int type, int id, double message, String country, double sunrise, double sunset) {
-        this.type = type;
-        this.id = id;
-        this.message = message;
-        this.country = country;
-        this.sunrise = sunrise;
-        this.sunset = sunset;
-    }
 
     public  int getType() {
         return type;

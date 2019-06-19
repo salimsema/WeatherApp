@@ -2,29 +2,23 @@ package au.com.weather.data.model;
 
 public class Wind {
 
-    private double speed;
-    private double deg;
-    
-    public Wind() {}
+    private String speed;
+    private String deg;
 
-    public  Wind(double speed, double deg) {
-        this.speed = speed;
-        this.deg = deg;
-    }
 
-    public  double getSpeed() {
+    public  String getSpeed() {
         return speed;
     }
 
-    public  void setSpeed(double speed) {
+    public  void setSpeed(String speed) {
         this.speed = speed;
     }
 
-    public  double getDeg() {
+    public  String getDeg() {
         return deg;
     }
 
-    public  void setDeg(double deg) {
+    public  void setDeg(String deg) {
         this.deg = deg;
     }
 }

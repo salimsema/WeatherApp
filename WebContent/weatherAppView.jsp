@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%-- <%@ page import="au.com.weather.data.model.*" %> --%>     
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+table, th, td {
+  border: 1px dotted;
+  border-collapse: collapse;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Salim's Weather Application</title>
 <script type="text/javascript">
@@ -25,7 +30,7 @@
     		</c:forEach>
 		</select>
 	</form>
-	<table>
+	<table style="border:dotted 2px #000000;border-collapse:collapse;">
 		<tr>
 			<td>City</td><td>${owm.name}</td>
 		</tr>
