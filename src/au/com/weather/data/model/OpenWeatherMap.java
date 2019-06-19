@@ -10,7 +10,7 @@ public class OpenWeatherMap {
     private int visibility;
     private Wind wind;
     private Clouds clouds;
-    private int dt;
+    private String dt;
     private Sys sys;
     private int timezone;
     private int id;
@@ -20,20 +20,14 @@ public class OpenWeatherMap {
     public  OpenWeatherMap() {
     }
 
-    public  OpenWeatherMap(Coord coord, List<Weather> weatherList, String base, Main main, Wind wind, Clouds clouds, int dt, Sys sys, int id, int timezone, String name, int cod) {
-        this.coord = coord;
-        this.weather = weatherList;
-        this.base = base;
-        this.main = main;
-        this.wind = wind;
-        this.clouds = clouds;
-        this.dt = dt;
-        this.sys = sys;
-        this.id = id;
-        this.timezone=timezone;
-        this.name = name;
-        this.cod = cod;
-    }
+	/*
+	 * public OpenWeatherMap(Coord coord, List<Weather> weatherList, String base,
+	 * Main main, Wind wind, Clouds clouds, long dt, Sys sys, int id, int timezone,
+	 * String name, int cod) { this.coord = coord; this.weather = weatherList;
+	 * this.base = base; this.main = main; this.wind = wind; this.clouds = clouds;
+	 * this.dt = dt; this.sys = sys; this.id = id; this.timezone=timezone; this.name
+	 * = name; this.cod = cod; }
+	 */
     
     public void toPrint() {
     	System.out.println("Coord=lat:"+coord.getLat() +":lon:"+coord.getLon());
@@ -110,11 +104,11 @@ public class OpenWeatherMap {
         this.clouds = clouds;
     }
 
-    public  int getDt() {
+    public  String getDt() {
         return dt;
     }
 
-    public  void setDt(int dt) {
+    public  void setDt(String dt) {
         this.dt = dt;
     }
 

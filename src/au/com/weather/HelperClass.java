@@ -1,11 +1,13 @@
 package au.com.weather;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.Set;
-
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -48,10 +50,22 @@ public class HelperClass {
 		restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
 		 
 		 OpenWeatherMap owm = restTemplate.getForObject(url, OpenWeatherMap.class);
+		 String formattedDt = getAESTDateAndTime(Long.parseLong(owm.getDt()));
+		 owm.setDt(formattedDt);
 		 if(null != owm)
 			 owm.toPrint();
 		 
 		 return owm;
      }
+	 
+	 public String getAESTDateAndTime(long unixTime) {
+		 final DateTimeFormatter formatter = 
+		    	    DateTimeFormatter.ofPattern("EEEE h:mm a");
+
+		    	final String formattedDt = Instant.ofEpochSecond(unixTime)
+		    	        .atZone(ZoneId.of("Australia/Sydney"))
+		    	        .format(formatter);
+		    	return formattedDt;
+	 }
 
 }
