@@ -1,0 +1,11 @@
+META-INF\spring.components
+au\com\weather\data\model\Wind.class
+au\com\weather\controller\WeatherController.class
+au\com\weather\data\model\Weather.class
+au\com\weather\data\model\Clouds.class
+au\com\weather\helper\HelperClass.class
+au\com\weather\data\model\Sys.class
+au\com\weather\data\model\City.class
+au\com\weather\data\model\Coord.class
+au\com\weather\data\model\Main.class
+au\com\weather\data\model\OpenWeatherMap.class
