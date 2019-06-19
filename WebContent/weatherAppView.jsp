@@ -6,7 +6,7 @@
 <head>
 <style type="text/css">
 table, th, td {
-  border: 1px dotted;
+  border: 2px dotted;
   border-collapse: collapse;
 }
 </style>
@@ -30,7 +30,7 @@ table, th, td {
     		</c:forEach>
 		</select>
 	</form>
-	<table style="border:dotted 2px #000000;border-collapse:collapse;">
+	<table>
 		<tr>
 			<td>City</td><td>${owm.name}</td>
 		</tr>
