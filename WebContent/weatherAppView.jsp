@@ -6,7 +6,7 @@
 <head>
 <style type="text/css">
 table, th, td {
-  border: 2px dotted;
+  border: 1px dotted;
   border-collapse: collapse;
 }
 </style>

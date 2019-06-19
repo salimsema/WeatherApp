@@ -33,6 +33,11 @@ public class HelperClass {
 	private final String TEMPCONSTANT = " \u00B0C";
 			
 	
+	/**
+	 * This method will load Properties file
+	 * @param propFile prop file name
+	 * @return {@link Properties} will return object of Property file
+	 */
 	public Properties loadPropFile(String propFile) {
 		Properties prop = new Properties();
 		try {
@@ -43,6 +48,10 @@ public class HelperClass {
 		return prop;
 	}
 	
+	/**
+	 * It will populate city dropdown list
+	 * @return {@link City} array of City object
+	 */
 	public ArrayList<City> populateCityDropDown() {
 		Properties properties = loadPropFile(PROPFILE);
 	    Set<String> citiesSet = properties.stringPropertyNames();
@@ -56,7 +65,12 @@ public class HelperClass {
 		return cityList;
 	}
 	
-	public OpenWeatherMap getRespViaSpring(String cityCode) {
+	/**
+	 * It will call API and fetch data for a particular city
+	 * @param cityCode City code 
+	 * @return return data in form of {@link OpenWeatherMap}
+	 */
+	public OpenWeatherMap getWeatherData(String cityCode) {
 		RestTemplate restTemplate = new RestTemplate();
 		 
 		Properties apiDetails = loadPropFile(PROPAPI);
@@ -71,16 +85,17 @@ public class HelperClass {
 		restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
 		 
 		OpenWeatherMap owm = restTemplate.getForObject(url, OpenWeatherMap.class);
-		 
+
 		owm = transformData(owm,units);
-		 
-		if(null != owm)
-			owm.toPrint();
-		 
 		return owm;
 	}
 	 
-	 public String getAESTDateAndTime(long unixTime) {
+	 /**
+	  * It will convert date in AEST
+	 * @param unixTime Unix time format in long
+	 * @return return date in AEST format
+	 */
+	public String getAESTDateAndTime(long unixTime) {
 		 final DateTimeFormatter formatter = 
 		    	    DateTimeFormatter.ofPattern(DATETIMEPATTERN);
 
@@ -90,7 +105,13 @@ public class HelperClass {
 		    	return formattedDt;
 	 }
 	 
-	 public OpenWeatherMap transformData(OpenWeatherMap owm, String unit) {
+	 /**
+	  * It will transform {@link OpenWeatherMap}
+	 * @param owm {@link OpenWeatherMap} data which will be transformed 
+	 * @param unit for eg. Metric
+	 * @return {@link OpenWeatherMap} transformed data
+	 */
+	public OpenWeatherMap transformData(OpenWeatherMap owm, String unit) {
 		 
 		 String formattedDt = getAESTDateAndTime(Long.parseLong(owm.getDt()));
 		 owm.setDt(formattedDt);
